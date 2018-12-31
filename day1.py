@@ -7,7 +7,8 @@ frequency = 0
 for cmd in instructions:
     frequency += cmd
 
-print("Part 1: " + str(frequency))
+print("< Day 1 Part 1 >")
+print("Frequency: " + str(frequency) + "\n")
 
 # Part 2
 frequency = 0
@@ -17,7 +18,8 @@ while True:
     for cmd in instructions:
         frequency += cmd
         if frequency in viewed:
-            print("Part 2: " + str(frequency))
+            print("< Day 1 Part 2 >")
+            print("Repeated Frequency: " + str(frequency) + "\n")
             exit()
 
         else:    
