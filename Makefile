@@ -7,3 +7,6 @@ all:
 
 2:
 	python.exe day2.py
+
+3:
+	python.exe day3.py
