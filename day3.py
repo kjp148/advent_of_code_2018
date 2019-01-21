@@ -14,8 +14,8 @@ class Instruction:
         print("ID Number:    " + str(self.ID))
         print("X Coordinate: " + str(self.from_left))
         print("Y Coordinate: " + str(self.from_top))
-        print("Width:        " + str(self.size_vert))
-        print("Height:       " + str(self.size_horiz))
+        print("Width:        " + str(self.size_horiz))
+        print("Height:       " + str(self.size_vert))
 
 instr_array = []
 for line in file:
@@ -23,8 +23,11 @@ for line in file:
     from_left   = line[line.find("@ ") + 2:line.find(",")] # After "@ " | until ","
     from_top    = line[line.find(",") + 1:line.find(":")]  # After ","  | until ":"
     size_horiz  = line[line.find(": ") + 2:line.find("x")] # After ": " | until "x"
-    size_vert   = line[line.find("x") + 1:line.find("\n")] # After "x"  | until "\n"
+    size_vert   = line[line.find("x") + 1:]                # After "x"  | until end of line
     instr_array.append(Instruction(ID, from_left, from_top, size_horiz, size_vert))
+
+for i in instr_array:
+    i.printAll()
 
 # Part 1
 sheet = [[0] * 1000 for i in range(1000)]
@@ -39,7 +42,7 @@ for instruction in instr_array:
         for j in range(vert_start, vert_end):
             sheet[i][j] += 1
 
-# Count square inches with more than 1
+# Count square inches with overlap
 square_count = 0
 for i in range(999):
     for j in range(999):
