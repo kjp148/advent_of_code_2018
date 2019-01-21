@@ -27,4 +27,24 @@ for line in file:
     instr_array.append(Instruction(ID, from_left, from_top, size_horiz, size_vert))
 
 # Part 1
+sheet = [[0] * 1000 for i in range(1000)]
 
+for instruction in instr_array:
+    horiz_start = instruction.from_left - 1
+    horiz_end   = horiz_start + instruction.size_horiz
+    vert_start  = instruction.from_top - 1
+    vert_end    = vert_start + instruction.size_vert
+
+    for i in range(horiz_start, horiz_end):
+        for j in range(vert_start, vert_end):
+            sheet[i][j] += 1
+
+# Count square inches with more than 1
+square_count = 0
+for i in range(999):
+    for j in range(999):
+        if sheet[i][j] > 1:
+            square_count += 1
+
+print("< Day 3 Part 1 >")
+print("Square Inches Overlapping: " + str(square_count))
