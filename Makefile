@@ -2,6 +2,7 @@ all:
 	python.exe day1.py
 	python.exe day2.py
 	python.exe day3.py
+	python.exe day4.py
 	
 1:
 	python.exe day1.py
@@ -11,3 +12,6 @@ all:
 
 3:
 	python.exe day3.py
+
+4:
+	python.exe day4.py
