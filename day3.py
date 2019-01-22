@@ -49,6 +49,25 @@ for i in range(999):
             square_count += 1
 
 print("< Day 3 Part 1 >")
-print("Square Inches Overlapping: " + str(square_count))
+print("Square Inches Overlapping: " + str(square_count) + "\n")
 
 # Part 2
+
+# Search each claim for no overlap
+for instruction in instr_list:
+    horiz_start = instruction.from_left - 1
+    horiz_end   = horiz_start + instruction.size_horiz
+    vert_start  = instruction.from_top - 1
+    vert_end    = vert_start + instruction.size_vert
+    bad_sheet   = False
+
+    for i in range(horiz_start, horiz_end):
+        for j in range(vert_start, vert_end):
+            if sheet[i][j] > 1:
+                bad_sheet = True
+
+    if bad_sheet is False:
+        good_claim = instruction.ID
+
+print("< Day 3 Part 2 >")
+print("Non-Overlapping Claim ID: " + str(good_claim) + "\n")
