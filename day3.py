@@ -17,6 +17,7 @@ class Instruction:
         print("Width:        " + str(self.size_horiz))
         print("Height:       " + str(self.size_vert))
 
+# Create list of instructions
 instr_list = []
 for line in file:
     ID          = line[line.find("#") + 1:line.find(" ")]  # After "#"  | until " "
@@ -27,9 +28,9 @@ for line in file:
     instr_list.append(Instruction(ID, from_left, from_top, size_horiz, size_vert))
 
 # Part 1
-sheet = [[0] * 1000 for i in range(1000)]
+sheet = [[0] * 1000 for i in range(1000)] # Every index [n][n] in sheet represents 1 square inch of fabric
 
-# Create list of instructions
+# Add 1 to every square inch in sheet that an instruction covers
 for instruction in instr_list:
     horiz_start = instruction.from_left - 1
     horiz_end   = horiz_start + instruction.size_horiz
@@ -49,3 +50,5 @@ for i in range(999):
 
 print("< Day 3 Part 1 >")
 print("Square Inches Overlapping: " + str(square_count))
+
+# Part 2
